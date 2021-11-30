@@ -17,7 +17,14 @@
 
 
 ### 网络相关
-[网络](/network/network.md#tcp_udp_diff)
+
+[HTTP协议的特点，关于HTTP请求GET和POST的区别](/network/network.md)
+
+[Scoket连接和HTTP连接的区别](/network/network.md#scoket_http_diff)
+
+[TCP连接的三次握手](/network/network.md#tcp_3_hand)
+
+[TCP和UDP的区别于联系](/network/network.md#tcp_udp_diff)
 
 ### UIKit相关
 
