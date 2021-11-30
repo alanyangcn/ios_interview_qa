@@ -1,0 +1,22 @@
+## Block中可以修改全局变量，全局静态变量，局部静态变量吗？
+
+全局变量和静态全局变量的值改变，以及它们被Block捕获进去，因为是全局的，作用域很广
+静态变量和自动变量，被Block从外面捕获进来，成为__main_block_impl_0这个结构体的成员变量
+自动变量是以值传递方式传递到Block的构造函数里面去的。Block只捕获Block中会用到的变量。由于只捕获了自动变量的值，并非内存地址，所以Block内部不能改变自动变量的值。
+Block捕获的外部变量可以改变值的是静态变量，静态全局变量，全局变量
+
+Block就分为以下3种
+
+_NSConcreteStackBlock:只用到外部局部变量、成员属性变量，且没有强指针引用的block都是StackBlock。 StackBlock的生命周期由系统控制的，一旦返回之后，就被系统销毁了,是不持有对象的
+
+_NSConcreteStackBlock所属的变量域一旦结束，那么该Block就会被销毁。在ARC环境下，编译器会自动的判断，把Block自动的从栈copy到堆。比如当Block作为函数返回值的时候，肯定会copy到堆上
+
+
+_NSConcreteMallocBlock:有强指针引用或copy修饰的成员属性引用的block会被复制一份到堆中成为MallocBlock，没有强指针引用即销毁，生命周期由程序员控制,是持有对象的
+_NSConcreteGlobalBlock:没有用到外界变量或只用到全局变量、静态变量的block为_NSConcreteGlobalBlock，生命周期从创建到应用程序结束,也不持有对象
+
+
+
+
+ARC环境下，一旦Block赋值就会触发copy，__block就会copy到堆上，Block也是__NSMallocBlock。ARC环境下也是存在__NSStackBlock的时候，这种情况下，__block就在栈上
+ARC下，Block中引用id类型的数据有没有__block都一样都是retain，而对于基础变量而言，没有的话无法修改变量值，有的话就是修改其结构体令其内部的forwarding指针指向拷贝后的地址达到值的修改
