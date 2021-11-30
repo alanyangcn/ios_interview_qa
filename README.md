@@ -21,9 +21,7 @@
 
 ### UIKit相关
 
-[通过[UIImage imageNamed:]生成的对象什么时候被释放？](/UIKit/UIKit.md)
-
-[UIWindow](/oc/UIWindow.md)
+[UIKit](/UIKit/UIKit.md)
 
 ### 优化相关
 
