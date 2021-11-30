@@ -51,6 +51,8 @@ HTTPS：安全超文本传输协议（Secure Hypertext Transfer Protocol），�
 
 ![图片](https://upload-images.jianshu.io/upload_images/3788243-4830cacee1f1e7d3.png?imageMogr2/auto-orient/strip|imageView2/2/w/875/format/webp)
 
+
+<span id="tcp_udp_diff">
 ## TCP和UDP的区别于联系
 
 * TCP为传输控制层协议，为面向连接、可靠的、点到点的通信；
